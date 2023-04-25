@@ -1,0 +1,73 @@
+//LLamar partials 
+@use "button";
+@use "config"; 
+@use "utils";
+* {
+    @include reset-pm();//uso mixin 
+    box-sizing: border-box;
+}
+body {
+    background-color: $primary-color;
+    font-family: 'Courier New', Courier, monospace;
+}
+a{
+    color: $secondarycolor;
+    text-decoration: none;
+}
+h2 {
+    font-weight: bolder;
+    font-size: size(6); //uso de funciones
+
+}
+h3{
+    font-weight: lighter;
+    font-size: size(3); //uso de funciones
+}
+.container {
+    background-color: white;
+    margin: 100px auto;
+    width: 1280px;
+    padding: 50px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    background-image: url(../Assets/bckg.jpg);
+    background-size: 100% 100%;
+}
+//Uso del nesting SELECTORES DENTRO DE SELECTORES
+ul{
+    @include reset-pm(); //uso de mixin
+    list-style: none;
+    display: flex;
+    gap: 20px; 
+    li{
+        a{
+           @include btn($background-color:$terciary-color,$color:$fontbtn-color ,$bold:"true"); //uso de mixin con envio de parametros
+           //Uso de pseudo clases modificadas dentro del mismo selector
+           &:hover{
+            @include btn($secondarycolor,$terciary-color ,"false");
+            box-shadow:$box-shadow;
+           }
+        }
+    }
+}
+
+header {
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+}
+.prices {
+    .prev{
+        font-size: size(2);
+        font-weight: bolder;
+        color: $fontbtn-color;
+        text-decoration: line-through;
+    }
+    .now{
+        font-size: size(5);
+        font-weight: bolder;
+
+    }
+}
